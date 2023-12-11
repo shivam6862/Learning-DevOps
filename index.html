@@ -3,13 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Learning DevOps</title>
     <style>
       body {
-        background-color: #fc5e56;
+        background: linear-gradient(
+          to bottom,
+          #565869,
+          #40414f,
+          #343541,
+          #202123,
+          #050509
+        );
         padding: 0;
         margin: 0;
-        overflow: hidden;
+        overflow-x: hidden;
       }
       .container > h1 {
         color: #b6d9d9;
@@ -29,7 +36,10 @@
       ul {
         padding: 1rem 3rem;
         margin: 0;
-        color: #b6d9d9;
+        background: linear-gradient(to right, #fff, #f7f7f8, #ececf1, #d9d9e3);
+        color: transparent;
+        background-clip: text;
+        -webkit-background-clip: text;
       }
       li {
         list-style: none;
@@ -39,8 +49,11 @@
       }
       a {
         text-decoration: none;
-        color: #b6d9d9;
-        border-bottom: 1px solid #b6d9d9;
+        background: linear-gradient(to right, #fff, #f7f7f8, #ececf1, #d9d9e3);
+        color: transparent;
+        background-clip: text;
+        -webkit-background-clip: text;
+        border-bottom: 1px solid #d9d9e3;
       }
       a:hover {
         color: #dcf4fc;
@@ -52,7 +65,7 @@
         position: fixed;
         bottom: 0;
         width: 100vw;
-        color: #bbffff;
+        color: #b6d9d9;
       }
       footer > p {
         padding: 0.25rem;
@@ -146,5 +159,18 @@
         then please give a star.
       </p>
     </footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var links = document.querySelectorAll("a");
+        links.forEach(function (link) {
+          link.addEventListener("click", function (event) {
+            event.preventDefault();
+            var linkPath = link.getAttribute("href");
+            window.location.href =
+              "read.html?path=" + encodeURIComponent(linkPath);
+          });
+        });
+      });
+    </script>
   </body>
 </html>

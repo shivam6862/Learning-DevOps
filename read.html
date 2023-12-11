@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Readme content</title>
+  </head>
+  <style>
+    body {
+      background: linear-gradient(
+        to bottom,
+        #565869,
+        #40414f,
+        #343541,
+        #202123,
+        #050509
+      );
+      padding: 0;
+      margin: 0;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+    #readme-content {
+      padding: 1rem;
+      margin: 0;
+      background: linear-gradient(to right, #fff, #f7f7f8, #ececf1, #d9d9e3);
+      color: transparent;
+      background-clip: text;
+      -webkit-background-clip: text;
+    }
+    a {
+      text-decoration: none;
+      background: linear-gradient(to right, #fff, #f7f7f8, #ececf1, #d9d9e3);
+      color: transparent;
+      background-clip: text;
+      -webkit-background-clip: text;
+      border-bottom: 1px solid #b6d9d9;
+    }
+  </style>
+  <body>
+    <div>
+      <a href="index.html">Back to index</a>
+    </div>
+    <div id="readme-content"></div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        function getQueryParam(name) {
+          const urlParams = new URLSearchParams(window.location.search);
+          const path = urlParams.get(name);
+          console.log(path);
+          return path;
+        }
+        function parseMarkdownToHtml(markdown) {
+          markdown = markdown
+            .replace(/^#\s(.+)$/gm, "<h1>$1</h1>")
+            .replace(/^##\s(.+)$/gm, "<h2>$1</h2>")
+            .replace(/^###\s(.+)$/gm, "<h3>$1</h3>")
+            .replace(/^####\s(.+)$/gm, "<h4>$1</h4>")
+            .replace(/^#####\s(.+)$/gm, "<h5>$1</h5>")
+            .replace(/^######\s(.+)$/gm, "<h6>$1</h6>")
+            .replace(/\*\*(.*)\*\*/gim, "<b>$1</b>")
+            .replace(/\*(.*)\*/gim, "<i>$1</i>")
+            .replace(/([^0-9])\.\s/g, "$1.<br>")
+            .replace(/([^0-9])\:\s/g, "$1:<br>")
+            .replace(/\-/g, "<br>")
+            .replace(/(\*|_)(.+?)(\*|_)/g, "<em>$2</em>")
+            .replace(/(\*\*|__)(.+?)(\*\*|__)/g, "<strong>$2</strong>")
+            .replace(/`(.+?)`/g, "<code>$1</code>");
+
+          markdown = `<p>${markdown.replace(/\n\n/g, "</p><p>")}</p>`;
+
+          return markdown;
+        }
+
+        const readmePath = getQueryParam("path");
+        if (readmePath) {
+          fetch(readmePath)
+            .then((response) => response.text())
+            .then((data) => {
+              document.getElementById("readme-content").innerHTML =
+                parseMarkdownToHtml(data);
+            })
+            .catch((error) => {
+              console.error("Error fetching README.md:", error);
+              document.getElementById("readme-content").innerHTML =
+                "<p>Error loading content.</p>";
+            });
+        } else {
+          document.getElementById("readme-content").innerHTML =
+            "<p>No path provided.</p>";
+        }
+      });
+    </script>
+  </body>
+</html>
