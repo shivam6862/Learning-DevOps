@@ -1,6 +1,6 @@
 # Learning-Continuous-Integration-with-Jenkins
 
-## 1.Concepts-of-Continuous
+## 1.Concepts-of-Continuous-Integration
 
 ## 2.Setting-up-Jenkins
 
