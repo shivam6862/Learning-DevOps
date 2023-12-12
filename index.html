@@ -5,8 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Learning DevOps</title>
     <style>
-      body {
-        background: linear-gradient(
+      :root {
+        --bg-color: #050509;
+        --text-color: #b6d9d9;
+        --text-color-hover: #dcf4fc;
+        --border-color: #d9d9e3;
+        --bg-gradient: linear-gradient(
           to bottom,
           #565869,
           #40414f,
@@ -14,15 +18,25 @@
           #202123,
           #050509
         );
+        --text-bg-color: linear-gradient(
+          to right,
+          #fff,
+          #f7f7f8,
+          #ececf1,
+          #d9d9e3
+        );
+      }
+      body {
+        background: var(--bg-gradient);
         padding: 0;
         margin: 0;
         overflow-x: hidden;
       }
       .container > h1 {
-        color: #b6d9d9;
+        color: var(--text-color);
         padding: 0rem 0rem 1rem 0rem;
         margin: 0;
-        border-bottom: 1px solid #b6d9d9;
+        border-bottom: 1px solid var(--border-color);
         padding: 0.5rem;
         width: 100vw;
       }
@@ -36,7 +50,7 @@
       ul {
         padding: 1rem 3rem;
         margin: 0;
-        background: linear-gradient(to right, #fff, #f7f7f8, #ececf1, #d9d9e3);
+        background: var(--text-bg-color);
         color: transparent;
         background-clip: text;
         -webkit-background-clip: text;
@@ -49,14 +63,14 @@
       }
       a {
         text-decoration: none;
-        background: linear-gradient(to right, #fff, #f7f7f8, #ececf1, #d9d9e3);
+        background: var(--text-bg-color);
         color: transparent;
         background-clip: text;
         -webkit-background-clip: text;
-        border-bottom: 1px solid #d9d9e3;
+        border-bottom: 1px solid var(--border-color);
       }
       a:hover {
-        color: #dcf4fc;
+        color: var(--text-color-hover);
       }
       .container > ul > li > ul > li {
         list-style-type: lower-roman;
@@ -65,7 +79,7 @@
         position: fixed;
         bottom: 0;
         width: 100vw;
-        color: #b6d9d9;
+        color: var(--text-color);
       }
       footer > p {
         padding: 0.25rem;

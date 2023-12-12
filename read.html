@@ -6,8 +6,12 @@
     <title>Readme content</title>
   </head>
   <style>
-    body {
-      background: linear-gradient(
+    :root {
+      --bg-color: #050509;
+      --text-color: #b6d9d9;
+      --text-color-hover: #dcf4fc;
+      --border-color: #d9d9e3;
+      --bg-gradient: linear-gradient(
         to bottom,
         #565869,
         #40414f,
@@ -15,6 +19,16 @@
         #202123,
         #050509
       );
+      --text-bg-color: linear-gradient(
+        to right,
+        #fff,
+        #f7f7f8,
+        #ececf1,
+        #d9d9e3
+      );
+    }
+    body {
+      background: var(--bg-gradient);
       padding: 0;
       margin: 0;
       overflow-x: hidden;
@@ -23,18 +37,18 @@
     #readme-content {
       padding: 1rem;
       margin: 0;
-      background: linear-gradient(to right, #fff, #f7f7f8, #ececf1, #d9d9e3);
+      background: var(--text-bg-color);
       color: transparent;
       background-clip: text;
       -webkit-background-clip: text;
     }
     a {
       text-decoration: none;
-      background: linear-gradient(to right, #fff, #f7f7f8, #ececf1, #d9d9e3);
+      background: var(--text-bg-color);
       color: transparent;
       background-clip: text;
       -webkit-background-clip: text;
-      border-bottom: 1px solid #b6d9d9;
+      border-bottom: 1px solid var(--border-color);
     }
   </style>
   <body>

@@ -20,6 +20,20 @@ Embark on your Continuous Integration and Continuous Delivery (CI/CD) learning j
 
 ## 5.Learning-Continuous-Integration-with-Jenkins
 
+### 1.Concepts-of-Continuous-Integration
+
+### 2.Setting-up-Jenkins
+
+### 3.Configuring-Jenkins
+
+### 4.Continuous-Integration-Using
+
+### 6.Continuous-Delivery
+
+### 7.Continuous-Deployment
+
+### 8.Jenkins-Best-Practices
+
 Learning-Continuous-Integration-with-Jenkins......
 
 Feel free to explore, learn, and contribute to this repository. We encourage you to actively participate, share your insights, and collaborate with the DevOps community. Happy learning!
