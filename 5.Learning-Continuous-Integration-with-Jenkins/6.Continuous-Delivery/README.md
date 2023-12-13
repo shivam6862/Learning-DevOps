@@ -134,7 +134,7 @@ The Continuous Delivery pipeline is a series of automated steps and processes th
 4. **Modifying the Jenkins Job for Uploading Packages to Artifactory:**
    - Adjust the job for uploading artifacts to Artifactory.
 
-## Creating Jenkins Jobs for Specific Stages 55, 359, 367)
+## Creating Jenkins Jobs for Specific Stages
 
 ### Steps:
 
@@ -149,7 +149,7 @@ The Continuous Delivery pipeline is a series of automated steps and processes th
 3. **Creating a Jenkins Job to Run Performance Test:**
    - Configure a job for running performance tests.
 
-## Creating a Nice Visual Flow for the Continuous Delivery Pipeline 71)
+## Creating a Nice Visual Flow for the Continuous Delivery Pipeline
 
 ### Overview:
 
@@ -160,7 +160,7 @@ Visualizing the CD pipeline helps in understanding and monitoring the progress o
 1. **Creating Visual Flow:**
    - Use tools or plugins to create a visual representation of the CD pipeline.
 
-## Creating a Simple User Acceptance Test Using Selenium and TestNG 78)
+## Creating a Simple User Acceptance Test Using Selenium and TestNG
 
 ### Steps:
 
