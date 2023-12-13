@@ -50,6 +50,42 @@
       -webkit-background-clip: text;
       border-bottom: 1px solid var(--border-color);
     }
+    .your-class-name {
+      color: var(--text-color);
+      background: var(--bg-color);
+      padding: 1rem;
+      margin: 1rem 0;
+    }
+    #readme-content > div {
+      border: 2px solid red;
+      padding: 0.5rem 1rem;
+      margin: 0.5rem;
+    }
+    #readme-content > div > div {
+      border: 2px solid green;
+      padding: 0.5rem 1rem;
+      margin: 0.5rem;
+    }
+    #readme-content > div > div > div {
+      border: 2px solid blue;
+      padding: 0.5rem 1rem;
+      margin: 0.5rem;
+    }
+    #readme-content > div > div > div > div {
+      border: 2px solid yellow;
+      padding: 0.5rem 1rem;
+      margin: 0.5rem;
+    }
+    #readme-content > div > div > div > div > div {
+      border: 2px solid pink;
+      padding: 0.5rem 1rem;
+      margin: 0.5rem;
+    }
+    #readme-content > div > div > div > div > div > div {
+      border: 2px solid orange;
+      padding: 0.5rem 1rem;
+      margin: 0.5rem;
+    }
   </style>
   <body>
     <div>
@@ -65,26 +101,57 @@
           console.log(path);
           return path;
         }
-        function parseMarkdownToHtml(markdown) {
-          markdown = markdown
-            .replace(/^#\s(.+)$/gm, "<h1>$1</h1>")
-            .replace(/^##\s(.+)$/gm, "<h2>$1</h2>")
-            .replace(/^###\s(.+)$/gm, "<h3>$1</h3>")
-            .replace(/^####\s(.+)$/gm, "<h4>$1</h4>")
-            .replace(/^#####\s(.+)$/gm, "<h5>$1</h5>")
-            .replace(/^######\s(.+)$/gm, "<h6>$1</h6>")
-            .replace(/\*\*(.*)\*\*/gim, "<b>$1</b>")
-            .replace(/\*(.*)\*/gim, "<i>$1</i>")
-            .replace(/([^0-9])\.\s/g, "$1.<br>")
-            .replace(/([^0-9])\:\s/g, "$1:<br>")
-            .replace(/\-/g, "<br>")
-            .replace(/(\*|_)(.+?)(\*|_)/g, "<em>$2</em>")
-            .replace(/(\*\*|__)(.+?)(\*\*|__)/g, "<strong>$2</strong>")
-            .replace(/`(.+?)`/g, "<code>$1</code>");
 
-          markdown = `<p>${markdown.replace(/\n\n/g, "</p><p>")}</p>`;
+        function convertMarkdownToHtml(markdown) {
+          var convertedHtmlArray = markdown.split("\n# ");
+          convertedHtmlArray.map((word, index_i) => {
+            const subSections = word.split("\n## ");
+            convertedHtmlArray[index_i] = subSections[0];
+            if (subSections.length > 1)
+              convertedHtmlArray.push(subSections.slice(1));
+          });
+          convertedHtmlArray.map((Heading1, index_i) => {
+            if (index_i != 0) {
+              Heading1.map((word, index_j) => {
+                const subSections = word.split("\n### ");
+                convertedHtmlArray[index_i][index_j] = subSections;
+              });
+            }
+          });
+          convertedHtmlArray.map((Heading2, index_i) => {
+            if (index_i != 0) {
+              Heading2.map((Heading1, index_j) => {
+                Heading1.map((word, index_k) => {
+                  if (index_k != 0) {
+                    const subSections = word.split("\n#### ");
+                    convertedHtmlArray[index_i][index_j][index_k] =
+                      subSections[0];
+                    if (subSections.length > 1)
+                      convertedHtmlArray[index_i][index_j].push(
+                        subSections.slice(1)
+                      );
+                  }
+                });
+              });
+            }
+          });
+          return convertedHtmlArray;
+        }
 
-          return markdown;
+        function createNestedDiv(data) {
+          const container = document.createElement("div");
+          if (typeof data === "string") {
+            const div = document.createElement("div");
+            div.textContent = data.trim();
+            div.classList.add("your-class-name");
+            container.appendChild(div);
+          } else if (Array.isArray(data)) {
+            data.forEach((item) => {
+              const nestedDiv = createNestedDiv(item);
+              container.appendChild(nestedDiv);
+            });
+          }
+          return container;
         }
 
         const readmePath = getQueryParam("path");
@@ -92,8 +159,10 @@
           fetch(readmePath)
             .then((response) => response.text())
             .then((data) => {
-              document.getElementById("readme-content").innerHTML =
-                parseMarkdownToHtml(data);
+              const markdownToarray = convertMarkdownToHtml(data);
+              const nestedDivStructure = createNestedDiv(markdownToarray);
+              const readmeContent = document.getElementById("readme-content");
+              readmeContent.appendChild(nestedDivStructure);
             })
             .catch((error) => {
               console.error("Error fetching README.md:", error);
