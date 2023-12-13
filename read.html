@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Readme content</title>
+    <link rel="icon" href="/logo.png" />
   </head>
   <style>
     :root {
@@ -50,46 +51,50 @@
       -webkit-background-clip: text;
       border-bottom: 1px solid var(--border-color);
     }
-    .your-class-name {
-      color: var(--text-color);
-      background: var(--bg-color);
-      padding: 1rem;
-      margin: 1rem 0;
-    }
     #readme-content > div {
-      border: 2px solid red;
+      border-bottom: 2px solid var(--border-color);
       padding: 0.5rem 1rem;
-      margin: 0.5rem;
     }
     #readme-content > div > div {
-      border: 2px solid green;
+      border-bottom: 2px solid var(--border-color);
       padding: 0.5rem 1rem;
-      margin: 0.5rem;
+    }
+    #readme-content > div > :first-child {
+      font-size: 2rem !important;
+      font-weight: bold !important;
     }
     #readme-content > div > div > div {
-      border: 2px solid blue;
+      border-bottom: 2px solid var(--border-color);
       padding: 0.5rem 1rem;
-      margin: 0.5rem;
+    }
+    #readme-content > div > div > div > div > p:first-child {
+      font-size: 1.4rem !important;
+      font-weight: 700 !important;
     }
     #readme-content > div > div > div > div {
-      border: 2px solid yellow;
+      border-bottom: 2px solid var(--border-color);
       padding: 0.5rem 1rem;
-      margin: 0.5rem;
     }
     #readme-content > div > div > div > div > div {
-      border: 2px solid pink;
+      border-bottom: 2px solid var(--border-color);
       padding: 0.5rem 1rem;
-      margin: 0.5rem;
+    }
+    #readme-content > div > div > div > div > div > p:first-child {
+      font-size: 1.2rem !important;
+      font-weight: 700 !important;
     }
     #readme-content > div > div > div > div > div > div {
-      border: 2px solid orange;
+      border-bottom: 2px solid var(--border-color);
       padding: 0.5rem 1rem;
-      margin: 0.5rem;
+    }
+    #readme-content strong {
+      font-weight: bold;
+      font-size: 1.1rem;
     }
   </style>
   <body>
     <div>
-      <a href="index.html">Back to index</a>
+      <a href="index.html">Go back home</a>
     </div>
     <div id="readme-content"></div>
 
@@ -141,10 +146,21 @@
         function createNestedDiv(data) {
           const container = document.createElement("div");
           if (typeof data === "string") {
-            const div = document.createElement("div");
-            div.textContent = data.trim();
-            div.classList.add("your-class-name");
-            container.appendChild(div);
+            const paragraphs = data.trim().split("\r\n\r\n");
+            paragraphs.forEach((paragraphText) => {
+              const lines = paragraphText.split(" - ");
+              lines.forEach((line) => {
+                line = line.replace("#", "");
+                const p = document.createElement("p");
+                const strongRegex = /\*\*(.*?)\*\*/g;
+                const formattedLine = line.replace(
+                  strongRegex,
+                  (_, content) => `<strong>${content}</strong>`
+                );
+                p.innerHTML = formattedLine;
+                container.appendChild(p);
+              });
+            });
           } else if (Array.isArray(data)) {
             data.forEach((item) => {
               const nestedDiv = createNestedDiv(item);
@@ -165,7 +181,6 @@
               readmeContent.appendChild(nestedDivStructure);
             })
             .catch((error) => {
-              console.error("Error fetching README.md:", error);
               document.getElementById("readme-content").innerHTML =
                 "<p>Error loading content.</p>";
             });

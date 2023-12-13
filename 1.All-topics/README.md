@@ -1,8 +1,8 @@
 # Complete roadmap for DevOps
 
-Creating a complete roadmap for DevOps can be challenging, as the specific needs and technologies can vary depending on the organization, industry, and project requirements. However, I can provide a general roadmap that covers key concepts, practices, and tools commonly associated with DevOps. Keep in mind that this is a high-level overview, and you may need to adapt it to suit your specific context.
-
 ## All topics
+
+Creating a complete roadmap for DevOps can be challenging, as the specific needs and technologies can vary depending on the organization, industry, and project requirements. However, I can provide a general roadmap that covers key concepts, practices, and tools commonly associated with DevOps. Keep in mind that this is a high-level overview, and you may need to adapt it to suit your specific context.
 
 ### 1. **Understanding DevOps Principles:**
 

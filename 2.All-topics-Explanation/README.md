@@ -1,8 +1,8 @@
 # Detailed explanation
 
-Certainly! Let's dive into a more detailed explanation of each topic and subtopic:
-
 ## Topic and subtopic
+
+Certainly! Let's dive into a more detailed explanation of each topic and subtopic:
 
 ### 1. **Understanding DevOps Principles:**
 
