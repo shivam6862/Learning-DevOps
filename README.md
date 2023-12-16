@@ -1,6 +1,8 @@
 # Learning DevOps
 
-Welcome to the "learning-devops" repository! This repository is designed to guide individuals on their journey to mastering DevOps principles, tools, and practices. The content is organized into four main folders:
+## Welcome to the "learning-devops" repository!
+
+This repository is designed to guide individuals on their journey to mastering DevOps principles, tools, and practices. The content is organized into four main folders:
 
 ## 1. All-topics
 
@@ -53,3 +55,7 @@ Feel free to explore, learn, and contribute to this repository. We encourage you
 ## 6.Devops-Rest-Topics
 
 Certainly! Git, Maven, Gradle, Selenium, Docker, Jenkins, Kubernetes, Ansible, Puppet, Nagios, and Chef are widely used tools in the field of software development and continuous integration. Each plays a specific role in various stages of the software development lifecycle.
+
+## 7.Learning Docker
+
+This repository provides a quick reference guide for common Docker commands and Docker Compose usage. It covers essential tasks such as checking Docker versions, pulling images, running containers, managing volumes, and using Docker Compose for orchestrating multi-container applications. Whether you're a beginner or experienced Docker user, this guide offers detailed explanations and purposes for each command, making it a handy resource for Docker-related workflows.
