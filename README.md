@@ -49,3 +49,7 @@ This section introduces Continuous Deployment (CD), which takes automation a ste
 Here, you'll explore best practices for using Jenkins effectively. Topics include distributed builds, version controlling Jenkins configurations, auditing changes, implementing notifications using tools like HipChat, and adopting best practices for Jenkins jobs. This section provides insights into optimizing Jenkins usage for a smoother CI/CD workflow.
 
 Feel free to explore, learn, and contribute to this repository. We encourage you to actively participate, share your insights, and collaborate with the DevOps community. Happy learning!
+
+## 6.Devops-Rest-Topics
+
+Certainly! Git, Maven, Gradle, Selenium, Docker, Jenkins, Kubernetes, Ansible, Puppet, Nagios, and Chef are widely used tools in the field of software development and continuous integration. Each plays a specific role in various stages of the software development lifecycle.
